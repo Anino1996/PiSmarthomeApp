@@ -1,0 +1,16 @@
+
+</!DOCTYPE html>
+<html>
+<head>
+	<title>Homepage</title>
+</head>
+<body>
+	<h1>Trying to get this to work</h1>
+	<p>{{cmd}}</p>
+	
+	
+	{% url 'api:switch' as init_url %}
+	<p><a href= "{{init_url|add:'?cmd=on'}}">Turn on</a></p>
+	<p><a href= "{{init_url|add:'?cmd=off'}}">Turn off</a></p>
+</body>
+</html>
