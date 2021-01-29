@@ -1,0 +1,5 @@
+#!/bin/bash
+
+#Start the django server
+
+python3 /home/pi/Documents/Projects/ServerProject/manage.py runserver 0:8000
