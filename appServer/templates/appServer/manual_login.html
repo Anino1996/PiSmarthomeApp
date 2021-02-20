@@ -1,0 +1,38 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+		<title>
+			Login Page
+		</title>
+
+	</head>
+
+	<body style="background-color: #015605">
+		<div class="container">
+			<div class="row justify-content-center mt-3">
+				<div class="w-100"></div>
+    				<div class="col-8 rounded-3 p-3" style="background-color: #F2F5F1">
+    				    {% if form.errors %}
+                            <p>Your username and password didn't match. Please try again.</p>
+                        {% endif %}
+
+    				    <div class="row justify-content-center mt-3">
+
+    				            <div class="col-6 mt-2">
+
+                    				<form method="post" action="{% url 'login' %}">
+                                        {% csrf_token %}
+                                        {{ form.as_p }}
+                                        <input type="submit" class="btn btn-primary" value="Login" />
+                                        <input type="hidden" name="next" value="{{ next }}" />
+                                    </form>
+                                </div>
+
+					    </div>
+				    </div>
+			</div>
+		</div>
+	</body>
+</html>
