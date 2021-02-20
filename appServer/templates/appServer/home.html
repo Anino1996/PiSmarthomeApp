@@ -2,16 +2,22 @@
 </!DOCTYPE html>
 <html>
 <head>
+	<meta charset="utf-8">
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 	<title>Homepage</title>
 </head>
-<body>
+<body style="margin:5px; padding:5px;">
 	<h1>Trying to get this to work</h1>
 	<p><a href="{% url 'logout' %}"> Logout</a></p>
+	{% if cmd == 'on' or cmd == 'off' %}
+	<p>Light is {{cmd}}</p>
+	{% else %}
 	<p>{{cmd}}</p>
-	
+	{% endif %}
 	
 	{% url 'api:switch' as init_url %}
-	<p><a href= "{{init_url|add:'?cmd=on'}}">Turn on</a></p>
-	<p><a href= "{{init_url|add:'?cmd=off'}}">Turn off</a></p>
+	<p><a class="btn btn-success {% if cmd == 'on' %} disabled {% endif %}" href="{{init_url|add:'?cmd=on'}}" role="button" {% if cmd == 'on' %} aria-disabled="true"{% endif %} >Turn on</a></p>
+	<p><a class="btn btn-danger {% if cmd == 'off' %} disabled {% endif %}" href="{{init_url|add:'?cmd=off'}}" role="button" {% if cmd == 'off' %}aria-disabled="true" {% endif %}>Turn off</a></p>
 </body>
 </html>

@@ -12,10 +12,10 @@ class SwitchView(LoginRequiredMixin, View):
 		if command:
 			if command.lower()=='on':
 				lightPin.switch_on()	
-				fdbck='Light on' if lightPin.is_active else 'Error occurred'
+				fdbck=command.lower() if lightPin.is_active else 'Error occurred'
 			elif command.lower()=='off':
 				lightPin.switch_off()		
-				fdbck='Light off' if not lightPin.is_active else 'Error occurred'
+				fdbck=command.lower() if not lightPin.is_active else 'Error occurred'
 			else:
 				fdbck='Invalid request'
 		ctx={'cmd':fdbck}
