@@ -1,4 +1,4 @@
-/ServerProject/settings.py
+
 *.pyc
 __pycache__
 **/*.pyc
