@@ -1,6 +1,6 @@
-
-</!DOCTYPE html>
+<!DOCTYPE html>
 <html>
+<<<<<<< HEAD
 <head>
 	<meta charset="utf-8">
     	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -20,4 +20,43 @@
 	<p><a class="btn btn-success {% if cmd == 'on' %} disabled {% endif %}" href="{{init_url|add:'?cmd=on'}}" role="button" {% if cmd == 'on' %} aria-disabled="true"{% endif %} >Turn on</a></p>
 	<p><a class="btn btn-danger {% if cmd == 'off' %} disabled {% endif %}" href="{{init_url|add:'?cmd=off'}}" role="button" {% if cmd == 'off' %}aria-disabled="true" {% endif %}>Turn off</a></p>
 </body>
+=======
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+
+		<title>Home</title>
+	</head>
+
+	<body style="background-color: #015605">
+		
+		<div class="container">
+			<div class="row justify-content-center mt-3">
+				
+				<div class="col-6 rounded-3 p-3" style="background-color: #F2F5F1">
+					
+					
+					<h1 class="text-center" style="font-family: sans-serif;">Anino's Remote Switch</h1>
+					
+					<h3 class="text-center" style="font-family: sans-serif;">Light on</h3>
+
+					<div class= "row justify-content-around">
+						<div class="col-3">
+							<a class="btn btn-success " href="{{init_url|add:'?cmd=on'}}" role="button">Turn on</a>
+						</div>
+						<div class="col-3">							
+							<a class="btn btn-danger center" href="{{init_url|add:'?cmd=off'}}" role="button">Turn off</a>
+						</div>	
+					</div>
+				</div>
+		</div>
+	</div>
+		
+	</body>
+>>>>>>> 954563975e2b0f5d18bfdd1ddb16423e5f317892
 </html>
+
+
+
+
