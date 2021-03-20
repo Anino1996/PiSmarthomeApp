@@ -20,31 +20,29 @@ def loginwrap(func):
 	return wrapper_func
 
 
-class SwitchView(View): #Main page to switch device on and off
 
 # Wrap page  in authentication decorator
-
-	@loginwrap
-	def get(self, request):
+@loginwrap
+def SwitchView(request): #Main page to switch device on and off
 
 # Get command passed by pressing button
-		command=request.GET.get('cmd')
+	command=request.GET.get('cmd')
 
 # Check device  status 
-		fdbck='Light on' if lightPin.is_active else 'Light off'
+	fdbck='Light on' if lightPin.is_active else 'Light off'
 
 # Turn device on or off based on command
-		if command:
-			if command.lower()=='on':
-				lightPin.switch_on()	
-				fdbck=command.lower() if lightPin.is_active else 'Error occurred'
-			elif command.lower()=='off':
-				lightPin.switch_off()		
-				fdbck=command.lower() if not lightPin.is_active else 'Error occurred'
-			else:
-				fdbck='Invalid request'
-		ctx={'cmd':fdbck}
-		return render(request,'appServer/home.html',ctx)
+	if command:
+		if command.lower()=='on':
+			lightPin.switch_on()	
+			fdbck=command.lower() if lightPin.is_active else 'Error occurred'
+		elif command.lower()=='off':
+			lightPin.switch_off()		
+			fdbck=command.lower() if not lightPin.is_active else 'Error occurred'
+		else:
+			fdbck='Invalid request'
+	ctx={'cmd':fdbck}
+	return render(request,'appServer/home.html',ctx)
 
 
 # Handles manual login using authenticate
