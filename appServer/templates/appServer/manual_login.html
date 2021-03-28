@@ -11,10 +11,11 @@
 
 	<body style="background-color: #015605">
 		<div class="container">
+			
 			<div class="row justify-content-center mt-3">
 				<div class="w-100"></div>
     				<div class="col-8 rounded-3 p-3" style="background-color: #F2F5F1">
-    				    {% if form.errors %}
+    				    {% if feedback %}
                             <p>Your username and password didn't match. Please try again.</p>
                         {% endif %}
 
@@ -22,7 +23,7 @@
 
     				            <div class="col-6 mt-2">
 
-                    				<form method="post" action="{% url 'login' %}">
+                    				<form method="post" action="{% url 'appserver:login' %}">
                                         {% csrf_token %}
                                         {{ form.as_p }}
                                         <input type="submit" class="btn btn-primary" value="Login" />

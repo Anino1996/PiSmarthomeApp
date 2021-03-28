@@ -4,6 +4,7 @@ from BoardSwitch import smartPin
 from django.views import View
 from .forms import LoginForm
 from django.contrib.auth import authenticate, login, logout
+from django.urls import reverse
 
 # from django.contrib.auth.mixins import LoginRequiredMixin
 lightPin=smartPin(4)
@@ -13,7 +14,7 @@ lightPin=smartPin(4)
 def loginwrap(func):
 	def  wrapper_func(request):
 		if not request.user.is_authenticated:
-			return redirect('login')
+			return redirect(reverse('appserver:login'))
 
 		return func(request)
 
@@ -60,18 +61,23 @@ class logView(View):
 
 	def post(self, request):
 		recv=request.POST
-		username=recv.get('username'), 
+		username=recv.get('username')
 		password=recv.get('password')
-		form=loginForm(username=username, password=password)
 
-		if form.is_valid():
-			user=authenticate(request, username=username, password=password)
 
-			if user:
-				login(request, user)
+		user=authenticate(request, username=username, password=password)
 
-				return redirect('main')
+		if user:
+			login(request, user)
 
-		ctx={'form':form}
+			return redirect(reverse('appserver:main'))
+		form=LoginForm(dict(username=username, password=password))
+		ctx={'form':form, "feedback":True}
 		return render(request, 'appServer/manual_login.html', ctx)
+
+
+def logoutView(request):
+
+	logout(request)
+	return redirect(reverse('appserver:login'))
 
